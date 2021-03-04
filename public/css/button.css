@@ -1,0 +1,62 @@
+.animation_burger {
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 9999; }
+
+.animation_burger:hover .line {
+  stroke: #fff; }
+
+.animation_burger svg {
+  display: block;
+  width: 80px;
+  height: 80px; }
+
+.line {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round; }
+
+/* Hamburger */
+.line.top,
+.line.bottom {
+  stroke-dasharray: 50px 600px;
+  stroke-dashoffset: 0px; }
+
+.line.cross {
+  stroke-dasharray: 50px 60px;
+  stroke-dashoffset: 0px; }
+
+/* Cross */
+.on .line.top,
+.on .line.bottom {
+  stroke-dasharray: 70.71px 600px;
+  stroke-dashoffset: -392px; }
+
+.on .line.cross {
+  stroke-dasharray: 50px 60px;
+  stroke-dashoffset: 51px; }
+
+/* Timing */
+.line.cross {
+  -webkit-transition: 0.35s stroke-dasharray ease 0.35s, 0.35s stroke-dashoffset ease 0.35s, 0.35s stroke ease 0s;
+  transition: 0.35s stroke-dasharray ease 0.35s, 0.35s stroke-dashoffset ease 0.35s, 0.35s stroke ease 0s; }
+
+.line.top {
+  -webkit-transition: 0.525s stroke-dasharray ease 0s, 0.525s stroke-dashoffset ease 0s, 0.35s stroke ease 0s;
+  transition: 0.525s stroke-dasharray ease 0s, 0.525s stroke-dashoffset ease 0s, 0.35s stroke ease 0s; }
+
+.line.bottom {
+  -webkit-transition: 0.525s stroke-dasharray ease 0.35s, 0.525s stroke-dashoffset ease 0.35s, 0.35s stroke ease 0s;
+  transition: 0.525s stroke-dasharray ease 0.35s, 0.525s stroke-dashoffset ease 0.35s, 0.35s stroke ease 0s; }
+
+.on .line.cross {
+  -webkit-transition: 0.35s stroke-dasharray ease 0s, 0.35s stroke-dashoffset ease 0s, 0.35s stroke ease 0s;
+  transition: 0.35s stroke-dasharray ease 0s, 0.35s stroke-dashoffset ease 0s, 0.35s stroke ease 0s; }
+
+/*# sourceMappingURL=button.css.map */
