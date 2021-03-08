@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="UTF-8">
@@ -32,8 +32,13 @@
         </ul>
         <div class="right_header">
           <div class="languages">
-            <a href="#" class="uz">UZ</a>
-            <a href="#" class="active ru">RU</a>
+            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <a rel="alternate" hreflang="{{ $localeCode }}" class="{{ $properties['name'] }} <?php if (App::isLocale($localeCode)) { echo 'active';} ?> " href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                    {{ $properties['name'] }}
+                </a>
+            @endforeach
+           <!--  <a href="#" class="uz">UZ</a>
+            <a href="#" class="active ru">RU</a> -->
           </div>
           <a href="#" data-fancybox data-src="#enter_site" class="user">
             <svg height="512pt" viewBox="0 0 512 512" width="512pt" xmlns="http://www.w3.org/2000/svg">
@@ -132,7 +137,7 @@
 <!-- *******************POPUP**************** -->
 <div id="enter_site" style="display: none;" class="popup_block">
   <h2>Вход</h2>
-  <form action="">
+  <form action="{{route('login')}}">
     <div class="form-group">
       <label for="">Имя<span class="star">*</span></label>
       <input type="text" required="">
@@ -154,7 +159,7 @@
 <!-- *******************POPUP**************** -->
 <div id="registration" style="display: none;" class="popup_block">
   <h2>Регистрация</h2>
-  <form action="">
+  <form action="{{route('register')}}">
     <div class="form-group">
       <label for="">Имя<span class="star">*</span></label>
       <input type="text" required="">

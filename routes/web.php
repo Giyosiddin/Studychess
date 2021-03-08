@@ -13,12 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/', 'MainController@home')->name('home');
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
+	Route::get('/', 'MainController@home')->name('home');
 
-Auth::routes();
+	Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home2');
+	Route::get('/home', 'HomeController@index')->name('home2');
+});
+
