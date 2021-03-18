@@ -209,44 +209,19 @@
       <h2>Новости</h2>
       <div class="swiper-container news_swiper">
         <div class="swiper-wrapper">
+          @foreach($news as $post)
+
           <div class="swiper-slide">
-            <a href="news_inner.html" class="news_swiper_item">
+            <a href="{{route('inner_news', $post->slug)}}" class="news_swiper_item">
               <div class="news_swiper_item_img">
-                <img src="images/news1.jpg" alt="">
+                <img src="{{ Voyager::image( $post->image ) }}" alt="">
               </div>
               <div class="news_swiper_item_text">
-                <p>
-                  Хикару Накамура - победитель чемпионата по игре в пулю
-                </p>
+                <p>{{$post->getTranslatedAttribute('name', 'locale', app()->getLocale())}}</p>
               </div>
             </a>
           </div>
-          <div class="swiper-slide">
-            <a href="news_inner.html" class="news_swiper_item">
-              <div class="news_swiper_item_img">
-                <img src="images/news2.jpg" alt="">
-              </div>
-              <div class="news_swiper_item_text">
-                <p>
-                  Магнус Карлсен - отказался играть за команду Norway Gnomes
-                  Магнус Карлсен - отказался играть за команду Norway Gnomes
-                  Магнус Карлсен - отказался играть за команду Norway Gnomes
-                </p>
-              </div>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="news_inner.html" class="news_swiper_item">
-              <div class="news_swiper_item_img">
-                <img src="images/news3.jpg" alt="">
-              </div>
-              <div class="news_swiper_item_text">
-                <p>
-                  Даниил Дубов дважды победил чемпиона мира Магнуса Карлсена
-                </p>
-              </div>
-            </a>
-          </div>
+          @endforeach
         </div>
       </div>
       <div class="navigations">

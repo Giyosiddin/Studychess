@@ -17,8 +17,7 @@ class CreateTableQuotes extends Migration
             $table->id();
             $table->text('content');
             $table->string('image')->nullable();
-            $table->string('author');
-            $table->timestamps();
+            $table->string('author')->nullable();
         });
     }
 

@@ -5,8 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Translatable;
 
-class Page extends Model
+class CourseDetail extends Model
 {
+    
 	use Translatable;
-    protected $translatable = ['title', 'meta_description','excerpt','body'];
+    protected $translatable = ['name', 'text'];
+    
+    public $timestamps = false;
 }

@@ -22,14 +22,15 @@
         <a href="index.html" class="logo">
           <img src="images/logo.svg" alt="">
         </a>
-        <ul>
+        {{menu('main', 'common.menu') }}
+       <!--  <ul>
           <li><a class="active" href="index.html">Главная</a></li>
           <li><a href="courses.html">Курсы</a></li>
           <li><a href="books.html">Книги</a></li>
           <li><a href="questions.html">Вопросы</a></li>
           <li><a href="about.html">О нас</a></li>
           <li><a href="contacts.html">Контакты</a></li>
-        </ul>
+        </ul> -->
         <div class="right_header">
           <div class="languages">
             @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)

@@ -28,5 +28,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 	Auth::routes();
 
 	Route::get('/home', 'HomeController@index')->name('home2');
+
+	Route::get('/news/{slug}', 'MainController@news_page')->name('inner_news');
+
+	Route::get('/page/{slug}', 'MainController@news_page')->name('inner_page');
+
+	Route::get('/courses', 'CoursesController@allCourses')->name('all-courses');
+
+	Route::get('/course/{slug}', 'CoursesController@course')->name('get-course');
 });
 
