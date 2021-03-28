@@ -17,6 +17,8 @@ class CreatePageDetailsTable extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->string('name')->nullable();
+            $table->string('page_id')->nullable();
+            $table->string('parent_id')->nullable();
             $table->text('text');
         });
     }

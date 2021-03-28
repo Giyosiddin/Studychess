@@ -8,5 +8,10 @@ use TCG\Voyager\Traits\Translatable;
 class Lesson extends Model
 {
 	use Translatable;
-    protected $translatable = ['title', 'description','for_who'];
+    protected $translatable = ['title', 'description','for_who','body'];
+
+    public function course()
+    {
+    	return $this->belongsTo(Course::class);
+    }
 }

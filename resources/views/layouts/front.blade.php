@@ -19,8 +19,8 @@
   <header>
     <div class="container">
       <div class="header_main">
-        <a href="index.html" class="logo">
-          <img src="images/logo.svg" alt="">
+        <a href="{{route('home')}}" class="logo">
+          <img src="/images/logo.svg" alt="">
         </a>
         {{menu('main', 'common.menu') }}
        <!--  <ul>
@@ -48,7 +48,7 @@
               <path d="m341.332031 512c-23.53125 0-42.664062-19.136719-42.664062-42.667969v-384c0-18.238281 11.605469-34.515625 28.882812-40.511719l128.171875-42.730468c28.671875-8.789063 56.277344 12.480468 56.277344 40.578125v384c0 18.21875-11.605469 34.472656-28.863281 40.488281l-128.214844 42.753906c-4.671875 1.449219-9 2.089844-13.589844 2.089844zm128-480c-1.386719 0-2.558593.171875-3.816406.554688l-127.636719 42.558593c-4.183594 1.453125-7.210937 5.675781-7.210937 10.21875v384c0 7.277344 7.890625 12.183594 14.484375 10.113281l127.636718-42.558593c4.160157-1.453125 7.210938-5.675781 7.210938-10.21875v-384c0-5.867188-4.777344-10.667969-10.667969-10.667969zm0 0" />
               <path d="m186.667969 106.667969c-8.832031 0-16-7.167969-16-16v-32c0-32.363281 26.300781-58.667969 58.664062-58.667969h240c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16h-240c-14.699219 0-26.664062 11.96875-26.664062 26.667969v32c0 8.832031-7.167969 16-16 16zm0 0" />
               <path d="m314.667969 448h-85.335938c-32.363281 0-58.664062-26.304688-58.664062-58.667969v-32c0-8.832031 7.167969-16 16-16s16 7.167969 16 16v32c0 14.699219 11.964843 26.667969 26.664062 26.667969h85.335938c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" /></svg>
-            Вход
+            {{__("Вход")}}
           </a>
         </div>
         <div class="animation_burger">
@@ -68,24 +68,17 @@
     <div class="container fifty_space">
       <div class="row">
         <div class="col-lg-5 left_footer">
-          <a href="index.html" class="logo">
-            <img src="images/logo_black.svg" alt="">
+          <a href="{{route('home')}}" class="logo">
+            <img src="/images/logo_black.svg" alt="">
           </a>
-          <h5>О нас</h5>
-          <p>Мы сообщество успешных шахматистов. Мы обучаем шахматам с помощью специально разработанным нашим видео-урокам</p>
+          <h5>{{__("О нас")}}</h5>
+          <p>{{__("Мы сообщество успешных шахматистов. Мы обучаем шахматам с помощью специально разработанным нашим видео-урокам")}}</p>
         </div>
         <div class="col-lg-7 right_footer">
           <div class="row">
             <div class="col-lg-5 col-sm-6">
-              <h5>Информация</h5>
-              <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="courses.html">Курсы</a></li>
-                <li><a href="books.html">Книги</a></li>
-                <li><a href="questions.html">Вопросы</a></li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
-              </ul>
+              <h5>{{__("Информация")}}</h5>
+             {{menu('main', 'common.menu') }}
             </div>
             <div class="col-lg-7 col-sm-6">
               <h5>Контакты</h5>
@@ -137,56 +130,56 @@
 </body>
 <!-- *******************POPUP**************** -->
 <div id="enter_site" style="display: none;" class="popup_block">
-  <h2>Вход</h2>
+  <h2>{{__("Вход")}}</h2>
   <form action="{{route('login')}}">
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="">Имя<span class="star">*</span></label>
       <input type="text" required="">
+    </div> -->
+    <div class="form-group">
+      <label for="">E-mail<span class="star">*</span></label>
+      <input type="email" required="" name="email">
     </div>
     <div class="form-group">
-      <label for="">E-mail или телефон<span class="star">*</span></label>
-      <input type="email" required="">
+      <label for="">{{__("Parol")}}<span class="star">*</span></label>
+      <input type="password" required="" name="password">
     </div>
-    <div class="form-group">
-      <label for="">Пароль<span class="star">*</span></label>
-      <input type="password" required="">
-    </div>
-    <a data-fancybox data-src="" class="forget_password">Забыли пароль?</a>
-    <button type="submit" class="btn_template">Войти</button>
-    <p class="last_title_form">Ещё нет аккаунта? Тогда <a data-fancybox data-src="#registration">зарегистрируйтесь!</a></p>
+    <a data-fancybox data-src="" class="forget_password">{{__("Забыли пароль")}}?</a>
+    <button type="submit" class="btn_template">{{__("Войти")}}</button>
+    <p class="last_title_form">{{__("Ещё нет аккаунта? Тогда")}} <a data-fancybox data-src="#registration">{{__("зарегистрируйтесь")}}!</a></p>
   </form>
 </div>
 <!-- *******************POPUP**************** -->
 <!-- *******************POPUP**************** -->
 <div id="registration" style="display: none;" class="popup_block">
-  <h2>Регистрация</h2>
+  <h2>{{__("Регистрация")}}</h2>
   <form action="{{route('register')}}">
     <div class="form-group">
-      <label for="">Имя<span class="star">*</span></label>
-      <input type="text" required="">
+      <label for="">{{__("Имя")}} <span class="star">*</span></label>
+      <input type="text" name="username" required="">
     </div>
     <div class="form-group">
-      <label for="">Фамилия<span class="star">*</span></label>
-      <input type="text" required="">
+      <label for="">{{__("Фамилия")}}<span class="star">*</span></label>
+      <input type="text" name="lastname" required="">
     </div>
     <div class="form-group">
       <label for="">E-mail<span class="star">*</span></label>
-      <input type="email" required="">
+      <input type="email" required="" name="email">
     </div>
     <div class="form-group">
-      <label for="">Телефон<span class="star">*</span></label>
-      <input type="phone" required="">
+      <label for="">{{__("Телефон")}}<span class="star">*</span></label>
+      <input type="phone" required="" name="phone">
     </div>
     <div class="form-group">
-      <label for="">Создайте пароль<span class="star">*</span></label>
-      <input type="password" required="">
+      <label for="">{{__("Создайте пароль")}}<span class="star">*</span></label>
+      <input type="password" required="" name="password">
     </div>
     <div class="form-group">
-      <label for="">Повторите пароль<span class="star">*</span></label>
-      <input type="password" required="">
+      <label for="">{{__("Повторите пароль")}}<span class="star">*</span></label>
+      <input type="password" required="" name="password_confirmation ">
     </div>
-    <button type="submit" class="btn_template">Регистрация</button>
-    <p class="last_title_form">Уже есть аккаунт? Тогда <a data-fancybox data-src="#enter_site">авторизуйтесь!</a></p>
+    <button type="submit" class="btn_template">{{__("Регистрация")}} </button>
+    <p class="last_title_form">{{__("Уже есть аккаунт? Тогда")}}<a data-fancybox data-src="#enter_site">{{__("авторизуйтесь")}}!</a></p>
   </form>
 </div>
 <!-- *******************POPUP**************** -->

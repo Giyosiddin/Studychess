@@ -9,4 +9,9 @@ class Page extends Model
 {
 	use Translatable;
     protected $translatable = ['title', 'meta_description','excerpt','body'];
+
+    public function details()
+    {
+    	return $this->hasMany(PageDetail::class);
+    }
 }

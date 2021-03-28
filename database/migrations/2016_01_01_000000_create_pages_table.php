@@ -24,7 +24,7 @@ class CreatePagesTable extends Migration
             $table->text('meta_description')->nullable();
             $table->text('meta_keywords')->nullable();
             $table->enum('status', Page::$statuses)->default(Page::STATUS_INACTIVE);
-            $table->enum('template', ['about','contacts','default'])->default('default');
+            $table->enum('template', ['about','contacts','home','books','questions','default'])->default('default');
             $table->timestamps();
         });
     }

@@ -3,8 +3,8 @@
 
   <section class="general_main for_bg_color" style="background-image: url('/images/header-bg.jpg');">
     <div class="container">
-      <h1>Статья</h1>
-      <p>{{$post->getTranslatedAttribute('name', 'locale', app()->getLocale())}}</p>
+      <h1>{{$post->getTranslatedAttribute('name', 'locale', app()->getLocale())}}</h1>
+      <p>{{$post->getTranslatedAttribute('description', 'locale', app()->getLocale())}}</p>
     </div>
   </section>
   <section class="text_content">
