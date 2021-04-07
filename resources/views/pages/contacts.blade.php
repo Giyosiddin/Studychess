@@ -29,18 +29,19 @@
           <div class="col-lg-6 col-sm-6">
             <div class="contact_form">
               <h4>{{__("МЫ ОТКРЫТЫ К ОБЩЕНИЮ И ГОТОВЫ ОТВЕТИТЬ НА ВСЕ ВАШИ ВОПРОСЫ")}}</h4>
-              <form action="#">
+              <form action="{{route('sendForm')}}" method="POST">
+                @csrf
                  <div class="form-group">
-                   <input type="text" required="" placeholder="{{__('Имя')}}*" style="background-image: url('/images/user.svg')">
+                   <input type="text" name="name" required="" placeholder="{{__('Имя')}}*" style="background-image: url('/images/user.svg')">
                  </div>
                  <div class="form-group">
-                   <input type="email" required="" placeholder="E-mail*" style="background-image: url('/images/mail.svg')">
+                   <input type="email" required="" name="email" placeholder="E-mail*" style="background-image: url('/images/mail.svg')">
                  </div>
                  <div class="form-group">
-                   <input type="tel" required="" placeholder="{{__('Телефон')}}*" style="background-image: url('/images/phone.svg')">
+                   <input type="tel" required="" name="phone" placeholder="{{__('Телефон')}}*" style="background-image: url('/images/phone.svg')">
                  </div>
                  <div class="form-group">
-                   <textarea placeholder="{{__('Сообщение')}}*" class="autosize" required=""></textarea>
+                   <textarea placeholder="{{__('Сообщение')}}" name="message" class="autosize" ></textarea>
                  </div>
                  <button type="submit" class="">{{__("Отправить")}}</button>
 

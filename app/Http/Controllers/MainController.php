@@ -20,9 +20,12 @@ class MainController extends Controller
     	$news = News::all();
         $quotes = Quote::all(); 
         $page = Page::where('slug','bosh-sahifa')->first();
+        $about = Page::where('template','about')->first();
+        // dd($about);
+        $offer_about = $about->details()->where('id', 2)->first();
 
     	// $news = $news->load('translations');
-    	return view('pages.home', compact('news','quotes','page'));
+    	return view('pages.home', compact('news','quotes','page','offer_about'));
     }
 
     public function news_page($slug)
@@ -79,7 +82,8 @@ class MainController extends Controller
 
     public function sendForm(Request $request)
     {   
-        $details = $request->inputs();
-        \Mail::to('giyosiddinmirzaboyev@gmail.com')->send(new ContactMessage($details));
+        $details = $request->input();
+        $send = \Mail::to('giyosiddinmirzaboyev@gmail.com')->send(new ContactMessage($details));
+        dd($send);
     }
 }

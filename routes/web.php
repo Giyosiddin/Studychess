@@ -25,7 +25,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
 	Route::get('/', 'MainController@home')->name('home');
 
-	Auth::routes();
+	Auth::routes(['verify' => true]);
 
 	Route::get('/home', 'HomeController@index')->name('home2');
 
@@ -42,5 +42,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 	Route::get('/books', 'MainController@books')->name('books');
 	
 	Route::get('/questions', 'MainController@questions')->name('questions');
+
+	Route::post('/send-message', 'MainController@sendForm')->name('sendForm');
+
+	Route::get('/profile', 'ProfileController@index')->name('profile.index')->middleware('verified');
+
+	Route::get('/add-to-cart/{type}/{id}', 'ShopController@addToCart')->name('add-to-cart');
 });
 

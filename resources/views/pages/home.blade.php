@@ -1,4 +1,5 @@
 @extends('layouts.front')
+<?php $details=$page->details()->whereNull('parent_id')->first(); ?>
 @section('content')
   <section class="general_main for_bg_color" style="background-image: url('images/header-bg.jpg');">
     <div class="container">
@@ -26,11 +27,11 @@
               <h4>Пешечный эндшпиль</h4>
               <div class="popular_courses_item_text_time">
                 <img src="images/clock.svg" alt="">
-                16 часов
+                16 {{__("часов")}}
               </div>
               <div class="popular_courses_item_text_bottom">
-                <span>Стоимость курса:</span>
-                <b>10$</b>
+                <span>{{__("Стоимость курса")}}:</span>
+                <b>100000 {{__("сум")}}</b>
               </div>
             </div>
           </a>
@@ -44,10 +45,10 @@
               <h4>Коневой эндшпиль</h4>
               <div class="popular_courses_item_text_time">
                 <img src="images/clock.svg" alt="">
-                20 часов
+                20 {{__("часов")}}
               </div>
               <div class="popular_courses_item_text_bottom">
-                <span>Стоимость курса:</span>
+                <span>{{__("Стоимость курса")}}:</span>
                 <b>12$</b>
               </div>
             </div>
@@ -62,10 +63,10 @@
               <h4>Пешечный эндшпиль</h4>
               <div class="popular_courses_item_text_time">
                 <img src="images/clock.svg" alt="">
-                16 часов
+                16 {{__("часов")}}
               </div>
               <div class="popular_courses_item_text_bottom">
-                <span>Стоимость курса:</span>
+                <span>{{__("Стоимость курса")}}:</span>
                 <b>10$</b>
               </div>
             </div>
@@ -80,10 +81,10 @@
               <h4>Ферзевый эндшпиль ФерзевыйэндшпильФерзевыйэндшпиль</h4>
               <div class="popular_courses_item_text_time">
                 <img src="images/clock.svg" alt="">
-                14 часов
+                14 {{__("часов")}}
               </div>
               <div class="popular_courses_item_text_bottom">
-                <span>Стоимость курса:</span>
+                <span>{{__("Стоимость курса")}}:</span>
                 <b>15$</b>
               </div>
             </div>
@@ -101,24 +102,24 @@
         <div class="col-lg-7">
           <div class="row fifty_space">
             <div class="col-lg-4">
-              <h3>Удобно</h3>
-              <p>Вы можете когда хотите и где угодно просматривать уроки</p>
+              <h3>{{__("Удобно")}}</h3>
+              <p>{{__("Вы можете когда хотите и где угодно просматривать уроки")}}</p>
             </div>
             <div class="col-lg-4">
-              <h3>ОПЫТ</h3>
-              <p>После прохождения курса вы набираетесь больше опыта</p>
+              <h3>{{_("ОПЫТ")}}</h3>
+              <p>{{__("После прохождения курса вы набираетесь больше опыта")}}</p>
             </div>
             <div class="col-lg-4">
-              <h3>ТРЕНЕРЫ</h3>
-              <p>Вы сможете задать вопрос и получить ответ от автора </p>
+              <h3>{{__("ТРЕНЕРЫ")}}</h3>
+              <p>{{__("Вы сможете задать вопрос и получить ответ от автора")}} </p>
             </div>
           </div>
         </div>
         <div class="col-lg-5">
           <div class="learn_pace">
-            <h5>Учитесь в своем собственном темпе</h5>
-            <h4>Развивайте свою карьеру, с помощью наших видео-уроков</h4>
-            <a href="{{route('all-courses')}}" class="btn_template">Начать изучение</a>
+            <h5>{{__("Учитесь в своем собственном темпе")}}</h5>
+            <h4>{{__("Развивайте свою карьеру, с помощью наших видео-уроков")}}</h4>
+            <a href="{{route('all-courses')}}" class="btn_template">{{__("Начать изучение")}}</a>
           </div>
         </div>
       </div>
@@ -129,38 +130,22 @@
       <div class="row">
         <div class="col-lg-6">
           <!-- <span>Особенности наших курсов</span> -->
-          <h3>Почему выбирают нас?</h3>
-          <p>StudyChess — это сообщество успешных шахматистов. Мы обучаем шахматам с помощью специально разработанным нашим видео-урокам</p>
+          <h3>{{$details->getTranslatedAttribute('name', 'locale', app()->getLocale())}}</h3>
+          <p>{{$details->getTranslatedAttribute('text', 'locale', app()->getLocale())}}</p>
         </div>
         <div class="col-lg-6 ">
           <div class="why_main_right">
+            @foreach($details->childdetails as $detail)
             <div class="why_me_item">
               <div class="why_me_item_img">
-                <img src="/images/crown.svg" alt="">
+                <img src="{{Voyager::image($detail->image)}}" alt="">
               </div>
               <div class="why_me_item_text">
-                <h5>Лучшие лидеры отрасли</h5>
-                <p>Мы отличаемся тем что, у нас своя методика обучения</p>
+                 <h5>{{$detail->getTranslatedAttribute('name', 'locale', app()->getLocale())}}</h5>
+                 <p>{{$detail->getTranslatedAttribute('text', 'locale', app()->getLocale())}}</p>
               </div>
             </div>
-            <div class="why_me_item">
-              <div class="why_me_item_img">
-                <img src="/images/time.svg" alt="">
-              </div>
-              <div class="why_me_item_text">
-                <h5>Учитесь в удобном для вас темпе</h5>
-                <p>Вы можете смотреть видео-уроки когда захотите</p>
-              </div>
-            </div>
-            <div class="why_me_item">
-              <div class="why_me_item_img">
-                <img src="/images/magistr.svg" alt="">
-              </div>
-              <div class="why_me_item_text">
-                <h5>ТРЕНЕРЫ</h5>
-                <p>Вы сможете задать вопрос и получить ответ от автора </p>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>
@@ -168,40 +153,20 @@
   </section>  
   <section class="our_off for_bg_color" style="background-image: url('/images/quotes-bg.jpg');">
         <div class="container"> 
-            <h2>Мы предлагаем 3 способа изучать шахматы</h2>
+             <h2>{{$offer_about->getTranslatedAttribute('name', 'locale', app()->getLocale())}}</h2>
+            @foreach($offer_about->childdetails as $detail)
             <div class="our_off_item">
                 <div class="row">
                     <div class="col-sm-2">
-                        <img src="images/offer1w.svg" alt="">
+                        <img src="{{Voyager::image($detail->image)}}" alt="">
                     </div>
                     <div class="col-sm-10">
-                        <a href="#"><h5>С помощью наших курсов</h5></a>
-                        <p>Занимайтесь в удобное для вас время. Временных ограничений по изучению уроков и выполнению домашних заданий нет.</p>
+                        <h5>{{$detail->getTranslatedAttribute('name', 'locale', app()->getLocale())}}</h5>
+                        <p>{{$detail->getTranslatedAttribute('text', 'locale', app()->getLocale())}}</p>
                     </div>
                 </div>
             </div>
-            <div class="our_off_item">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <img src="images/offer2w.svg" alt="">
-                    </div>
-                    <div class="col-sm-10">
-                        <a href="#"><h5>С помощью наших видео-уроков</h5></a>
-                        <p>Скажите НЕТ скучной теории, которой грешат многие другие курсы. Вы получаете навык только во время практики. Именно поэтому в нашем курсе вас ждет много практики и интересных заданий.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="our_off_item">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <img src="images/offer3w.svg" alt="">
-                    </div>
-                    <div class="col-sm-10">
-                        <a href="#"><h5>С помощью наших тренеров</h5></a>
-                        <p>Вы не останетесь один на один с материалами курса. Вы сможете задать вопрос и в течение 24-х часов гарантированно получите ответ от одного из тренеров нашего сообщества.</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
   </section>
   <section class="news">

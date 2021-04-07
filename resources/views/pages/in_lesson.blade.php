@@ -31,7 +31,7 @@
       </div>
      <?=$lesson->getTranslatedAttribute('body', 'locale', app()->getLocale());?>
         <div class="links_other_courses">
-          <a href="#" class="to_cart btn_template">Добавить корзину</a>
+          <a href="{{route('add-to-cart',['lesson',$lesson->id])}}" class="to_cart btn_template">Добавить корзину</a>
           <div class="links_other_courses_in">
             <!-- <a href="#" class="links"><img src="images/long-arrow-pointing-to-left.svg" alt="">Предыдующей урок</a> -->
             <!-- <a href="#" class="">Cледующей урок <img src="images/right-arrow.svg" alt=""></a> -->

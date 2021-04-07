@@ -36,14 +36,6 @@
   <section class="what_learning">
     <div class="container">
     	<?php echo $course->getTranslatedAttribute('what_learn', 'locale', app()->getLocale()); ?>
-      <!-- <h3>Чему вы научитесь:</h3>
-      <ol>
-        <li>Познакомитесь с шахматами</li>
-        <li>Видеть всю шахматную доску в голове</li>
-        <li>Объединять несколько тактических приемов в один план и сокрушать своих соперников</li>
-        <li>Ограничивать ваших противников самыми опасными фигурами, чтобы получить преимущество</li>
-        <li>Будете хорошо разбираться в непростых ситуациях</li>
-      </ol> -->
     </div>
   </section>
   <section class="video_section">
@@ -67,38 +59,15 @@
            </div>
            <div class="video_item_text_price">
              <img src="/images/money.svg" alt="">
-             {{$lesson->price}}. сум
+             {{$lesson->price}}. {{__("сум")}}
            </div>
            <a href="{{route('get-lesson',[$course->slug ,$lesson->id])}}" class="btn_template">Подробнее</a>
          </div>
        </div>
        @endforeach
-       <div class="video_item">
-         <a href="#" class="video_item_img">
-           <img src="/images/img_video_1.jpg" alt="">
-           <span>2</span>
-         </a>
-         <div class="video_item_text">
-           <div class="video_item_text_racet"><img src="/images/raceta.svg" alt="">Видео-урок</div>
-           <h4>Знакомство с шахматами</h4>
-           <div class="video_item_text_info">
-             <p><img src="/images/saturn.svg" alt="">Начинающим</p>
-             <p><img src="/images/treug.svg" alt="">1-урок</p>
-             <p><img src="/images/clock.svg" alt="">30 минут</p>
-           </div>
-           <div class="video_item_text_about">
-             Ознакомитесь с шахматами. Какие фигуры есть, как ходят фигуры. Уникальный интенсив от StudyChess.
-           </div>
-           <div class="video_item_text_price">
-             <img src="/images/money.svg" alt="">
-             45 тыс. сум
-           </div>
-           <a href="video_inside_all.html" class="btn_template">Подробнее</a>
-         </div>
-       </div>
       
        <a href="#" class="more">Ещё</a>
-       <a href="#" class="all_buy">Купить весь курс</a>
+       <a href="{{route('add-to-cart',['course',$course->id])}}" class="all_buy">Купить весь курс</a>
     </div>
   </section>
 

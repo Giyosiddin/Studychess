@@ -1,6 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.front')
 
 @section('content')
+<section class="general_main for_bg_color" style="background-image: url('/images/header-bg.jpg');">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1>{{ __('Reset Password') }}</h1>
+        </div>
+    </div>
+</section>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
