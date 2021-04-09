@@ -48,5 +48,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 	Route::get('/profile', 'ProfileController@index')->name('profile.index')->middleware('verified');
 
 	Route::get('/add-to-cart/{type}/{id}', 'ShopController@addToCart')->name('add-to-cart');
+
+	Route::get('/cart', 'ShopController@cart')->name('cart');
 });
 
