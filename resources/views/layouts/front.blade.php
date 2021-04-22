@@ -194,5 +194,29 @@
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+<script type="text/javascript">
+  function submitForm(form){
+      var url = form.attr("action");
+      var formData = form.serialize();
+      // $(form).find("input[name]").each(function (index, node) {
+      //     formData[node.name] = node.value;
+      // });
+      $.post(url, formData).done(function (data) {
+          alert(data);
+      }).fail(function(error) {
+          var errors = JSON.parse(error);
+      alert(errors);
+      })
+      .always(function() {
+          alert( "finished" );
+      });
+  }
+  $('#login_form').on('submit', function(e){
+      e.preventDefault();
+      // $(this)
+      submitForm($(this));
+  });
+
+</script>
 
 </html>

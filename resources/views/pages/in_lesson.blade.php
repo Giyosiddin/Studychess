@@ -9,6 +9,11 @@
     </div>
   </section>
   <section class="inside_video">
+  @if(Session::has('exists'))
+    <div class="alert alert-success">
+      {{ Session::get('exists') }}
+    </div>
+  @endif
     <div class="container">
       <h2>Тема: {{$lesson->getTranslatedAttribute('title', 'locale', app()->getLocale())}}</h2>
       <p>{{$lesson->getTranslatedAttribute('description', 'locale', app()->getLocale())}}</p>

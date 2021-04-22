@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Course;
-use App\lesson;
-use App\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\OrderItem;
+use App\lesson;
+use App\Course;
+use App\Order;
 
 class ShopController extends Controller
 {
@@ -46,13 +47,21 @@ class ShopController extends Controller
                 }else{
                     $order = Order::find($orderId);
                 }
-                if($order->products->contains($id))
+                $item = OrderItem::where([['order_id', $order->id],['item_type', $type],['item_id', $id]])->first();
+                // dd($item);                
+                if(isset($item))
                 {
                    return redirect()->back()->with('exists','Bu darslik sizning korzinkangizda bor');
                 }else{
-                    $order->products()->attach($id);
+                
+                    $orderItem = OrderItem::create([
+                    'order_id' => $order->id,
+                    'item_type' => $type,
+                    'item_id' => $id
+                    ]);
+                    // $order->products()->attach($id);
+                // dd($orderItem);
                 }
-
                 session()->flash('success','Товар добавлен!');
                 return redirect()->route('basket',$locale);
         }else{
@@ -72,15 +81,15 @@ class ShopController extends Controller
                 ];
 
                 session()->put('cart', $cart);
-                dd($cart);
-                // return redirect()->back()->with('success', 'Korzinkaga qoshildi!');
+                // dd($cart);
+                return redirect()->route('checkout')->with('success', 'Korzinkaga qoshildi!');
            }
 
            if(isset($cart[$id])){
                 return redirect()->back()->with('exists','Bu darslik sizning korzinkangizda bor');
            }
         }
-            dd($cart);
+          return redirect()->route('checkout')->with('success', 'Korzinkaga qoshildi!');
 	}
 
 
