@@ -17,12 +17,12 @@ class MainController extends Controller
 {
     public function home()
     {
-    	$news = News::all();
+    	$news = News::limit(6)->get();
         $quotes = Quote::all(); 
         $page = Page::where('slug','bosh-sahifa')->first();
-        $about = Page::where('template','about')->first();
-        // dd($about);
-        $offer_about = $about->details()->where('id', 2)->first();
+        // $about = Page::where('template','about')->first();
+        $offer_about = $page->details()->where('id', 9)->first();
+        // dd($offer_about);
 
     	// $news = $news->load('translations');
     	return view('pages.home', compact('news','quotes','page','offer_about'));
