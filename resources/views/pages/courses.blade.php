@@ -37,9 +37,10 @@
               </select>
             </div> -->
             @foreach($courses as $course)
+            <?php $image = $course->getFirstMedia('image'); ?>
             <div class="video_item">
               <a href="{{route('get-course',$course->slug)}}" class="video_item_img not_number">
-                <img src="{{ Voyager::image( $course->image ) }}" alt="">
+                <img src="{{ $image->getFullUrl() }}" alt="">
               </a>
               <div class="video_item_text">
                 <div class="video_item_text_racet"><img src="/images/raceta.svg" alt="">Видео-урок</div>

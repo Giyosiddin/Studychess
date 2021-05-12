@@ -16,7 +16,7 @@ class CreateCourseDetailsTable extends Migration
         Schema::create('course_details', function (Blueprint $table) {
             $table->id();
             $table->string('icon')->nullable();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->text('text');
         });
     }

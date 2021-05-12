@@ -23,6 +23,7 @@ class CreateLessonsTable extends Migration
             $table->string('image')->nullable();
             $table->string('for_who')->nullable();
             $table->integer('course_id')->nullable();
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }

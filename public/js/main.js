@@ -1,5 +1,24 @@
 $(document).ready(function() {
+ 
+  $('form.login-form').submit(function (e) {
+        e.preventDefault();
+        var url = $(this).attr("action");
+        var data = $('form.login-form').serialize();
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data
 
+        }).done(function (res) {
+            console.log(res);
+            location.reload();
+        }).fail(function (res) {
+          console.log(res);
+            console.log(res.responseJSON.errors);
+            // $('.order-login .valid').addClass('error');
+            // $('.order-login span.error').text(res.responseJSON.errors.email[0]);
+        });
+    });
     autosize();
 
     function autosize() {
@@ -108,7 +127,23 @@ $(document).ready(function() {
         }
     });
 
+$(function() {
+      var $posts = $(".lessons");
+      var $ul = $("ul.pagination");
+      $ul.hide(); // Prevent the default Laravel paginator from showing, but we need the links...
 
+      $(".more").click(function(e) {
+          e.preventDefault();
+          $.get($ul.find("a[rel='next']").attr("href"), function(response) {
+            const url = new URL($ul.find("a[rel='next']").attr("href"));
+                // console.log(url.searchParams.get('page'));
+                // if(url.searchParams.get('page') === )
+               $posts.append(
+                   $(response).find(".lessons").html()
+               );
+          });
+      });
+    });
 
 })
 /******************************CAPTCHA**************************************/

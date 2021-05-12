@@ -17,13 +17,16 @@ class CoursesController extends Controller
 
     public function course($slug)
     {
-    	$course = Course::where('slug',$slug)->with('details','lessons')->first();
+    	$course = Course::where('slug',$slug)->with('allDetails','lessons')->first();
+        // dd($course->details2);
+        $course_details = $course->allDetails;
+        $lessons = $course->lessons()->paginate(10);
     	// $lessons = Lesson::all();
-    	return view('pages.in_course',compact('course'));
+    	return view('pages.in_course',compact('course','course_details','lessons'));
     }
     public function lesson($course,$id)
     {
-    	$course = $course = Course::where('slug',$course)->with('details','lessons')->first();
+    	$course = $course = Course::where('slug',$course)->first();
     	$lesson = $course->lessons()->where('id',$id)->first();
     	return view('pages.in_lesson',compact('lesson','course'));
     	// dd($lesson);

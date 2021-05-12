@@ -165,7 +165,7 @@
     </div>
     <div class="form-group">
       <label for="">{{__("Фамилия")}}<span class="star">*</span></label>
-      <input type="text" name="lastname" required="">
+      <input type="text" name="last_name" required="">
     </div>
     <div class="form-group">
       <label for="">E-mail<span class="star">*</span></label>
@@ -202,13 +202,13 @@
       //     formData[node.name] = node.value;
       // });
       $.post(url, formData).done(function (data) {
-          alert(data);
+          console.log(data);
       }).fail(function(error) {
           var errors = JSON.parse(error);
-      alert(errors);
+      console.log(errors);
       })
       .always(function() {
-          alert( "finished" );
+          location.reload(true);
       });
   }
   $('#login_form').on('submit', function(e){
@@ -216,6 +216,7 @@
       // $(this)
       submitForm($(this));
   });
+   
 
 </script>
 

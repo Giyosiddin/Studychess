@@ -11,12 +11,42 @@ use App\Order;
 
 class ShopController extends Controller
 {
+    
+    // public function __construct()
+    // {
+    //     $this->middleware(['auth','verified']);
+    // }
 
-    public function cart()
+
+    public function checkout()
     {
+        $order = '';
+        $items = [];
+        if(Auth::user()){
+            $user = Auth::user()->id;
+            // dd($user);
+            $order = Order::where('user_id',$user)->whereNull('status')->first();
+            // dd($order);
+            if(is_null($order)){
+                return redirect()->route('all-courses');
+            }
+            $items_a = $order->items()->select('item_id','item_type')->get();
+            // $ids = $items_a->pluck('item_id');
+            // $ids = $items_a->pluck('item_id');
+            // dd($ids);
+            foreach($items_a as $item){
+                // dd($item['item_type']);
+                if($item['item_type'] == 'lesson'){
+                    $items[] = Lesson::find($item['item_id'])->toArray();
+                }else{
+                    $items[] = Course::find($item['item_id'])->toArray();
+                }
+            }
+        }
+            // dd($items);
         $cart = session()->get('cart');
          // dd($cart);
-        return view('pages.cart');
+        return view('pages.checkout', compact('order','items'));
     }
 
 
@@ -63,7 +93,7 @@ class ShopController extends Controller
                 // dd($orderItem);
                 }
                 session()->flash('success','Товар добавлен!');
-                return redirect()->route('basket',$locale);
+                return redirect()->route('checkout');
         }else{
            $cart = session()->get('cart');
 
@@ -92,5 +122,20 @@ class ShopController extends Controller
           return redirect()->route('checkout')->with('success', 'Korzinkaga qoshildi!');
 	}
 
+    public function removeItem($order_id, $type, $item_id)
+    {
+        $order = Order::find($order_id);
+        $OrderItem = OrderItem::where('item_type', $type)->where('item_id', $item_id)->delete();
+        if(!isset($order->items[0])){
+            // dd($order->items);
+            $order->delete();
+        }
 
+        if(!$OrderItem){
+            return redirect()->back()->with(['error' => 'Error']);
+        }else{
+            return redirect()->back()->with(['success' => 'Deleted']);
+        }
+
+    }
 }
