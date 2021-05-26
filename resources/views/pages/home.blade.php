@@ -158,6 +158,13 @@
             <div class="our_off_item">
                 <div class="row">
                     <div class="col-sm-2">
+                      <?php
+                     //  $target = Voyager::image($detail->image);
+                     //  $link = \Storage::link9;
+                     // echo symlink($target, $link);
+
+                     //  echo readlink($link);
+                      ?>
                         <img src="{{Voyager::image($detail->image)}}" alt="">
                     </div>
                     <div class="col-sm-10">
