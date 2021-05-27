@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\OrderItem;
-use App\lesson;
+use App\Lesson;
 use App\Course;
 use App\Order;
 
