@@ -8,7 +8,7 @@ return [
     |
     */
 
-    'legacy_edit_add_bread' => false,
+    'legacy_edit_add_bread' => true,
 
     /*
     |
@@ -20,7 +20,7 @@ return [
 
     'clone_record' => [
         'enabled' => true,
-        'reset_types' => ['image', 'multiple_images','file'],
+        'reset_types' => ['multiple_images','file','user_belongsto_role_relationship'],
         'suffix_fields' => ['title','name','slug','key'],
     ],
 

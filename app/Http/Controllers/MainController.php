@@ -12,6 +12,7 @@ use App\Quote;
 use App\Page;
 use App\Book;
 use App\News;
+use App\Course;
 
 class MainController extends Controller
 {
