@@ -188,12 +188,12 @@
   </form>
 </div>
 <!-- *******************POPUP**************** -->
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/jquery.selectric.min.js') }}"></script>
-<script src="{{ asset('js/swiper.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('/js/jquery.min.js') }}"></script>
+<script src="{{ asset('/js/jquery.selectric.min.js') }}"></script>
+<script src="{{ asset('/js/swiper.min.js') }}"></script>
+<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('/js/main.js') }}"></script>
 <script type="text/javascript">
   function submitForm(form){
       var url = form.attr("action");
