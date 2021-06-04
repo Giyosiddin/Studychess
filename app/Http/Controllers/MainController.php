@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 use App\Mail\ContactMessage;
 use App\Question;
 use App\Teacher;
+use App\Lesson;
+use App\Course;
 use App\Quote;
 use App\Page;
 use App\Book;
 use App\News;
-use App\Course;
 
 class MainController extends Controller
 {
@@ -86,5 +87,11 @@ class MainController extends Controller
         $details = $request->input();
         $send = \Mail::to('giyosiddinmirzaboyev@gmail.com')->send(new ContactMessage($details));
         dd($send);
+    }
+    public function runkFilter()
+    {
+        $lessons = Lesson::where('runk', request('runk'))->get();
+        // dd($lessons);
+        return view('components.runk-results', compact('lessons'));
     }
 }

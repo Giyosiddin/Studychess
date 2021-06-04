@@ -143,6 +143,17 @@ $(function() {
                );
           });
       });
+
+    /* Razriyat filter for lesson */
+    $('select#nicer-select-id').on('change', function(){
+        var current_runk = $(this).val();
+
+        $.post('/filter-with-runk',{ 'runk': current_runk}, function(response){
+            $('.lessons').html(response);
+        });
+
+    });
+
     });
 
 })

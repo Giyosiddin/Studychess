@@ -40,7 +40,7 @@
             <?php $image = $course->getFirstMedia('image'); ?>
             <div class="video_item">
               <a href="{{route('get-course',$course->slug)}}" class="video_item_img not_number">
-                <img src="{{ Voyager::image($course->image)}}" alt="">
+                <img src="{{ Voyager::image($course->image) }}" alt="">
               </a>
               <div class="video_item_text">
                 <div class="video_item_text_racet"><img src="/images/raceta.svg" alt="">Видео-урок</div>
@@ -66,15 +66,15 @@
             <div class="block_filter">
               <span>{{__("Сортировать по")}}:</span>
               <div class="spacer"></div>
-              <select class="selectric-select" id="nicer-select-id" name="">
-                <option>{{__("Курсы")}}</option>
-                <option>1 разряд</option>
-                <option>2 разряд</option>
-                <option>3 разряд</option>
-                <option>4 разряд</option>
+              <select class="selectric-select" id="nicer-select-id" name="runk">
+                <option value="0">{{__("Курсы")}}</option>
+                <option value="1">1 разряд</option>
+                <option value="2">2 разряд</option>
+                <option value="3">3 разряд</option>
+                <option value="4">4 разряд</option>
               </select>
             </div>
-            <div class="row">
+            <div class="row lessons">
             	@foreach($lessons as $lesson)
             	<div class="col-xl-3 col-lg-4 col-md-6">
 	                <div class="video_item_unit">
@@ -82,15 +82,15 @@
 	                    <img src="{{ Voyager::image( $lesson->image ) }}" alt="">
 	                  </a>
 	                  <div class="video_item_unit_text">
-	                    <h5>{{$lesson->getTranslatedAttribute('name', 'locale', app()->getLocale())}}</h5>
+	                    <h5>{{$lesson->getTranslatedAttribute('title', 'locale', app()->getLocale())}}</h5>
 	                    <div class="video_item_unit_text_about">
 	                      <div class="video_item_unit_text_price">
-	                        <img src="images/money.svg" alt="">
+	                        <img src="/images/money.svg" alt="">
 	                        {{$lesson->price}}. {{__("сум")}}
 	                      </div>
 	                      <a href="{{route('get-lesson',[$lesson->course->slug, $lesson->id])}}">{{__("Подробнее")}}</a>
 	                    </div>
-	                    <a href="#" class="to_cart btn_template">{{__("Добавить корзину")}}</a>
+	                    <a href="{{route('add-to-cart',['lesson',$lesson->id])}}" class="to_cart btn_template">{{__("Добавить корзину")}}</a>
 	                  </div>
 	                </div>
               	</div>
