@@ -90,7 +90,12 @@ class MainController extends Controller
     }
     public function runkFilter()
     {
+        if(request('runk') == 0){
+        $lessons = Lesson::all();
+        }else{
         $lessons = Lesson::where('runk', request('runk'))->get();
+
+        }
         // dd($lessons);
         return view('components.runk-results', compact('lessons'));
     }
