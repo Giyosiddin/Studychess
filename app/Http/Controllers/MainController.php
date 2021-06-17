@@ -86,7 +86,8 @@ class MainController extends Controller
     {   
         $details = $request->input();
         $send = \Mail::to('giyosiddinmirzaboyev@gmail.com')->send(new ContactMessage($details));
-        dd($send);
+        return back()->with('success','Your message sent successfully!');
+        // dd($send);
     }
     public function runkFilter()
     {

@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -50,7 +47,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 	Route::get('/edit', 'ProfileController@edit')->name('profile.edit')->middleware('verified');
 
-	Route::post('/edit', 'ProfileController@edit')->name('profile.edit')->middleware('verified');
+	Route::post('/edit', 'ProfileController@edit')->name('profile.edit.post')->middleware('verified');
 
 	Route::get('/add-to-cart/{type}/{id}', 'ShopController@addToCart')->name('add-to-cart');
 
@@ -59,3 +56,20 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 	Route::get('/remove-item/{order_id}/{type}/{item_id}', 'ShopController@removeItem')->name('remove-item');
 });
 
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+    
+    // Route::group(['as' => 'voyager.'], function () {
+
+    //     $extensionController = '\MonstreX\VoyagerExtension\Controllers\VoyagerExtensionController';
+    //     //Load translations
+    //     Route::get('voyager-extension-translations', $extensionController . '@load_translations')->name('voyager_extension_translations');
+
+    //     //Asset Routes
+    //     // Route::get('voyager-extension-assets', ['uses' => $extensionController . '@assets', 'as' => 'voyager_extension_assets']);
+
+    //     //Assets Others
+    //     Route::get('voyager-extension/{alias}', ['uses' => $extensionController . '@assets_regular', 'as' => 'voyager_extension_assets_regular'])->where('alias', '.*');
+
+    // });
+});

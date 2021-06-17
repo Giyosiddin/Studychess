@@ -47,7 +47,7 @@
           <div class="col-lg-8 col-sm-8">
             <div class="contact_form" style="max-width: 100%;">
              <!--  <h4>{{__("МЫ ОТКРЫТЫ К ОБЩЕНИЮ И ГОТОВЫ ОТВЕТИТЬ НА ВСЕ ВАШИ ВОПРОСЫ")}}</h4> -->
-              <form action="{{route('profile.edit')}}" method="POST">
+              <form action="{{route('profile.edit.post')}}" method="POST">
                 @csrf
                  <div class="form-group">
                    <input type="text" name="name" required="" placeholder="{{__('Имя')}}" value="{{$user->name}}">

@@ -29,6 +29,12 @@
           <div class="col-lg-6 col-sm-6">
             <div class="contact_form">
               <h4>{{__("МЫ ОТКРЫТЫ К ОБЩЕНИЮ И ГОТОВЫ ОТВЕТИТЬ НА ВСЕ ВАШИ ВОПРОСЫ")}}</h4>
+              <?php 
+              if(request()->session()->exists('success')){ ?>
+                  <div class="alert alert-primary" role="alert">
+                    Successfull!
+                  </div>
+                <?php } ?>
               <form action="{{route('sendForm')}}" method="POST">
                 @csrf
                  <div class="form-group">
